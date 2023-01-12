@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To-Do List</title>
+    <style>
+      /* Style the to-do list container */
+      #todo-list {
+        width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+      
+      /* Style the input field and button */
+      input[type="text"], button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+      
+      /* Style the "Add" button */
+      button {
+        background-color: #000080;
+        color: white;
+        cursor: pointer;
+      }
+      
+      /* Style the list items */
+      li {
+        list-style-type: none;
+        padding: 12px;
+        border-bottom: 1px solid #ccc;
+        background-color: #f9f9f9;
+        font-size: 16px;
+      }
+      
+      /* Style the "Delete" button */
+      .delete {
+        float: right;
+        color: #000080;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="todo-list">
+      <h1>To-Do List</h1>
+      
+      <input type="text" id="task-input" placeholder="Enter a task">
+      <button onclick="addTask()">Add</button>
+<ul id="task-list"></ul>
+    </div>
+    
+    <script>
+      // Function to add a task to the list
+      function addTask() {
+        var taskInput = document.getElementById("task-input");
+        var task = taskInput.value;
+        
+        // Create a new list item
+        var newTask = document.createElement("li");
+        newTask.innerHTML = task + '<span class="delete" onclick="deleteTask(this)">Delete</span>';
+        
+        // Add the new task to the list
+        var taskList = document.getElementById("task-list");
+        taskList.appendChild(newTask);
+        
+        // Clear the input field
+        taskInput.value = "";
+      }
+      
+      // Function to delete a task from the list
+      function deleteTask(task) {
+        task.parentElement.remove();
+      }
+    </script>
+  </body>
+</html>
